@@ -17,6 +17,9 @@ services:
 
     webserver:
         image: puckel/docker-airflow:1.10.8_local
+        build:
+          dockerfile: Dockerfile
+          context: .
         restart: always
         depends_on:
             - postgres
@@ -44,6 +47,9 @@ services:
 
     flower:
         image: puckel/docker-airflow:1.10.8_local
+        build:
+          dockerfile: Dockerfile
+          context: .
         restart: always
         depends_on:
             - redis
@@ -56,6 +62,9 @@ services:
 
     scheduler:
         image: puckel/docker-airflow:1.10.8_local
+        build:
+          dockerfile: Dockerfile
+          context: .
         restart: always
         depends_on:
             - webserver
@@ -75,6 +84,9 @@ services:
 
     worker:
         image: puckel/docker-airflow:1.10.8_local
+        build:
+          dockerfile: Dockerfile
+          context: .
         restart: always
         depends_on:
             - scheduler
